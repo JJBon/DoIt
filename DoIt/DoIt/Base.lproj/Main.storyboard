@@ -13,7 +13,7 @@
         <!--Do It -->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="DoIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="TasksViewController" customModule="DoIt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -88,6 +88,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahb-m0-csX">
                                 <rect key="frame" x="172.5" y="262" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="2tx-Pq-Rae" eventType="touchUpInside" id="JwK-MM-xTW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -106,7 +109,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addTap" destination="ahb-m0-csX" id="ndw-PR-ae4"/>
                         <outlet property="importantSwitch" destination="Ait-rc-BMh" id="HKr-s7-ZtY"/>
                         <outlet property="taskNameTextField" destination="5FY-JL-yyB" id="HdU-fo-lO8"/>
                     </connections>
