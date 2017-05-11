@@ -26,9 +26,17 @@ class CreateTaskViewController: UIViewController {
     @IBAction func addTapped(_ sender: Any) {
         //Create a Task from outlet information
         
-        let task = Task()
+        //getting access to core data through appDelegate
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let task = Task(context: context)
         task.name = taskNameTextField.text!
         task.important = importantSwitch.isOn
+        
+        //Para grabar en core data 
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         //Add new task in previous controller
         
