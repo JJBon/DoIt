@@ -19,7 +19,7 @@ class CompleteTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if task.important {
-            taskLabel.text = "❗️\(task.name)"
+            taskLabel.text = "❗️\(task.name!)"
         }else {
             taskLabel.text = task.name
 
