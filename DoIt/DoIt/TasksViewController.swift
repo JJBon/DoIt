@@ -24,6 +24,11 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getTask()
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -54,15 +59,24 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         performSegue(withIdentifier: "addSegue", sender: nil)
     }
     
-    // se me pasó esta linea , afecta el flujo de información no funciona el reload
-    // configuración de dos segues a continuación
+    // función saca los datos de core data y los mete en el array
+    
+    func getTask(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+    // fetch tiene un throw lo que implica hacer un do try catch para el posible error
+        
+        do {
+            tasks = try context.fetch(Task.fetchRequest()) as!  [Task]
+            print(tasks)
+        }catch {
+            print("ERROR")
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addSegue" {
-            let nextVC = segue.destination as! CreateTaskViewController
-            nextVC.previousVC = self
-        }
-        
+ 
         if segue.identifier == "selectTaskSegue" {
             let nextVC = segue.destination as! CompleteTaskViewController
             nextVC.task = sender as! Task

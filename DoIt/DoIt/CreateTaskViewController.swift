@@ -10,7 +10,6 @@ import UIKit
 
 class CreateTaskViewController: UIViewController {
 
-    var previousVC = TasksViewController()
     
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var importantSwitch: UISwitch!
@@ -34,14 +33,11 @@ class CreateTaskViewController: UIViewController {
         task.name = taskNameTextField.text!
         task.important = importantSwitch.isOn
         
-        //Para grabar en core data 
+        //Para grabar en core data , pop back
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
-        //Add new task in previous controller
-        
-        previousVC.tasks.append(task)
-        previousVC.tableView.reloadData()
+     
         navigationController!.popViewController(animated: true)
     }
    
